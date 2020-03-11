@@ -1,0 +1,6 @@
+DEBUG=True
+ENV=development
+TEMPLATE_DEBUG=%(DEBUG)s
+SECRET_KEY=ARANDOMSECRETKEY
+DATABASE_URL=postgres://postgres:password@db:5432/medicar_db
+POSTGRES_HOST_AUTH_METHOD=trust
