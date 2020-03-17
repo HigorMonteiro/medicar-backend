@@ -7,7 +7,7 @@ class Specialty(models.Model):
     class Meta:
         verbose_name = 'Specialty'
         verbose_name_plural = 'Specialties'
-        
+
     def __str__(self):
         return self.name
 
@@ -24,6 +24,6 @@ class Doctor(models.Model):
     class Meta:
         verbose_name = 'Doctor'
         verbose_name_plural = 'Doctors'
-        
+
     def __str__(self):
         return self.name + '-' + self.crm

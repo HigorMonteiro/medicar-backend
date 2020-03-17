@@ -58,7 +58,7 @@ ROOT_URLCONF = 'backend.urls'
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:4200',
     'http://localhost:4200',
-) 
+)
 
 TEMPLATES = [
     {
@@ -136,4 +136,5 @@ STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
 
-DATABASES = { 'default': db_url.config(ssl_require=False) }
+DATABASES = {'default': db_url.config(ssl_require=False)}
+
