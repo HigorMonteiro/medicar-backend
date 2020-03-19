@@ -121,8 +121,6 @@ USE_L10N = True
 USE_TZ = True
 
 # auth
-LOGIN_URL = 'admin/'
-LOGIN_REDIRECT_URL = 'admin/'
 AUTH_USER_MODEL = 'accounts.User'
 
 
