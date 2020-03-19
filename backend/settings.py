@@ -121,14 +121,10 @@ USE_L10N = True
 USE_TZ = True
 
 # auth
-LOGIN_URL = 'login'
+LOGIN_URL = 'admin/'
 LOGIN_REDIRECT_URL = 'admin/'
-LOGOUT_URL = 'logout'
 AUTH_USER_MODEL = 'accounts.User'
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.ModelBackend',
-)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
