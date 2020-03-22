@@ -1,8 +1,39 @@
-from django_filters.rest_framework import DjangoFilterBackend
+import django_filters
 from rest_framework import generics, filters
 
 from .models import Specialty, Doctor
 from .serializers import SpecialtySerializer, DoctorSerializer
+
+
+class ListFilter(django_filters.Filter):
+    def __init__(self, query_param, *args, **kwargs):
+        super(ListFilter, self).__init__(*args, **kwargs)
+        self.query_param = query_param
+        self.lookup_expr = 'in'
+
+    def filter(self, queryset, value):
+        try:
+            request = self.parent.request
+        except AttributeError:
+            return None
+
+        values = set()
+        query_list = request.GET.getlist(self.query_param)
+        if query_list:
+            for v in query_list:
+                values = values.union(set(v.split(',')))
+            values = set(map(int, values))
+            queryset = super(ListFilter, self).filter(queryset, values)
+        return queryset
+
+
+class DoctorFilter(django_filters.FilterSet):
+    specialty = ListFilter(field_name='specialty',
+                           query_param='specialty')
+
+    class Meta:
+        model = Doctor
+        fields = ['specialty']
 
 
 class SpecialtyList(generics.ListAPIView):
@@ -16,6 +47,6 @@ class DoctorList(generics.ListAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     filter_backends = [filters.SearchFilter,
-                       DjangoFilterBackend]
+                       django_filters.rest_framework.DjangoFilterBackend]
     search_fields = ['name']
-    filter_fields = ['specialty', 'specialty__id']
+    filterset_class = DoctorFilter
