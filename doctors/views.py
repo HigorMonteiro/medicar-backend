@@ -1,5 +1,7 @@
 import django_filters
 from rest_framework import generics, filters
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 from .models import Specialty, Doctor
 from .serializers import SpecialtySerializer, DoctorSerializer
@@ -37,6 +39,8 @@ class DoctorFilter(django_filters.FilterSet):
 
 
 class SpecialtyList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     queryset = Specialty.objects.all()
     serializer_class = SpecialtySerializer
     filter_backends = [filters.SearchFilter]
@@ -44,6 +48,8 @@ class SpecialtyList(generics.ListAPIView):
 
 
 class DoctorList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
     filter_backends = [filters.SearchFilter,

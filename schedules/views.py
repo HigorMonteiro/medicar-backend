@@ -1,5 +1,7 @@
 import django_filters
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 from .serializers import ScheduleSerializer
 from .models import Schedule
@@ -43,6 +45,8 @@ class ScheduleFilter(django_filters.FilterSet):
 
 
 class ScheduleList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     queryset = Schedule.objects.all().order_by('day')
     serializer_class = ScheduleSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
