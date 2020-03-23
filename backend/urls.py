@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/api-token-auth/', views.obtain_auth_token),
     path('api/', include('doctors.urls')),
     path('api/', include('schedules.urls')),
+    path('api/', include('consultations.urls')),
 ]

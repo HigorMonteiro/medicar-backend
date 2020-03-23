@@ -18,6 +18,3 @@ class Consultation(models.Model):
     class Meta:
         verbose_name = 'Consultation'
         verbose_name_plural = 'Consultations'
-
-    def __str__(self):
-        return self.day + '-' + self.hour
