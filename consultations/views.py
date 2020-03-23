@@ -51,3 +51,19 @@ class ConsultationLisView(generics.ListAPIView):
 
         serializer = query_serializer(schedule, schedule_hour, patient)
         return Response(serializer.data)
+
+
+class ConsultationDestroy(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    serializer_class = ConsultationSerializer
+    queryset = Consultation.objects.filter(accomplish=False)
+
+    def delete(self, request, *args, **kwargs):
+
+        if self.queryset.filter(user__id=request.user.id,
+            accomplish = False, id=self.kwargs['pk']):
+            return self.destroy(request, *args, **kwargs)
+        return Response({
+            'msg': 'selected conulstation was not found',
+        })
