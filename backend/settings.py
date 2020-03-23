@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django_filters',
     'accounts',
     'doctors',
-    'schedules'
+    'schedules',
+    'consultation'
 ]
 
 MIDDLEWARE = [
