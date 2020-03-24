@@ -8,21 +8,21 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager, Permission
 class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(
-        'Usuário', max_length=30, unique=True, validators=[
+        max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
-                'Informe um nome de usuário válido. '
-                'Este valor deve conter apenas letras, números '
-                'e os caracteres: @/./+/-/_ .'
+                'Please provide a valid username.'
+                'This value must contain only letters, numbers '
+                'and the characters: @/./+/-/_ .'
                 , 'invalid'
             )
-        ], help_text='Um nome curto que será usado para identificá-lo de forma única na plataforma'
+        ]
     )
-    name = models.CharField('Nome', max_length=100, blank=True)
-    email = models.EmailField('E-mail', unique=True)
-    is_staff = models.BooleanField('Equipe', default=False)
-    is_active = models.BooleanField('Ativo', default=True)
-    date_joined = models.DateTimeField('Data de Entrada', auto_now_add=True)
+    name = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(unique=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'name']

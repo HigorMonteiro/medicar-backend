@@ -4,6 +4,6 @@ from .views import SpecialtyList, DoctorList
 
 
 urlpatterns = [
-    path('especialidades/', SpecialtyList.as_view()),
-    path('medicos/', DoctorList.as_view())
+    path('specialties/', SpecialtyList.as_view()),
+    path('doctors/', DoctorList.as_view())
 ]

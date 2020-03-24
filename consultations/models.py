@@ -16,5 +16,5 @@ class Consultation(models.Model):
     accomplish = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = 'Consultation'
-        verbose_name_plural = 'Consultations'
+        verbose_name = 'Consulta'
+        verbose_name_plural = 'Consultas'

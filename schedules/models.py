@@ -13,8 +13,8 @@ class Schedule(models.Model):
 
     class Meta:
         unique_together = ("doctor", "day")
-        verbose_name = 'Schedule'
-        verbose_name_plural = 'Schedules'
+        verbose_name = 'Agenda'
+        verbose_name_plural = 'Agendas'
 
     def __str__(self):
         return self.doctor.name

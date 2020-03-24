@@ -4,6 +4,6 @@ from .views import ConsultationLisView, ConsultationDestroy
 
 
 urlpatterns = [
-    path('consultas/', ConsultationLisView.as_view()),
-    path('consultas/<int:pk>', ConsultationDestroy.as_view()),
+    path('consultations/', ConsultationLisView.as_view()),
+    path('consultation/<int:pk>', ConsultationDestroy.as_view()),
 ]

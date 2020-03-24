@@ -7,6 +7,6 @@ def validate_date(day):
     if day < date.today():
         day = day.strftime('%d/%m/%Y')
         raise ValidationError(
-            _('%(day)s é menor que a data atual'),
+            _('%(day)s is less than the current date'),
             params={'day': day},
         )

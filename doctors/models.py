@@ -5,8 +5,8 @@ class Specialty(models.Model):
     name = models.CharField(max_length=90)
 
     class Meta:
-        verbose_name = 'Specialty'
-        verbose_name_plural = 'Specialties'
+        verbose_name = 'Especialidade'
+        verbose_name_plural = 'Especialidades'
 
     def __str__(self):
         return self.name
@@ -22,8 +22,8 @@ class Doctor(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Doctor'
-        verbose_name_plural = 'Doctors'
+        verbose_name = 'Médico'
+        verbose_name_plural = 'Médicos'
 
     def __str__(self):
         return self.name + '-' + self.crm
