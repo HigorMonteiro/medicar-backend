@@ -2,7 +2,11 @@ import re
 
 from django.db import models
 from django.core import validators
-from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import (
+    AbstractBaseUser, UserManager, PermissionsMixin)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -41,3 +45,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return str(self).split(" ")[0]
+
+
+@receiver(post_save, sender=User)
+def user_save_token(instance, **kwargs):
+    if kwargs['created']:
+        Token.objects.create(user=instance)
