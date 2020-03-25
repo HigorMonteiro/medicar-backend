@@ -63,11 +63,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-# CORS_ORIGIN_ALLOW_ALL = True
-
 CORS_ORIGIN_WHITELIST = (
-    'https://localhost:5000',
-    'http://localhost:5000',
+    'https://localhost:4200',
+    'http://localhost:4200',
 )
 
 TEMPLATES = [
