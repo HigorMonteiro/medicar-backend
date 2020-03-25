@@ -64,6 +64,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'backend.urls'
 
 CORS_ORIGIN_WHITELIST = (
+    'https://medicar-frontend.herokuapp.com',
     'https://localhost:4200',
     'http://localhost:4200',
 )
