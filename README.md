@@ -22,3 +22,9 @@ url: http://localhost:8000
 
 ### access Api at the address below:
 url: http://localhost:8000/api/
+
+### Access Admin on heroku
+url: https://medicar-backend.herokuapp.com/
+
+email: demo@medicar.com.br
+password: demo123
