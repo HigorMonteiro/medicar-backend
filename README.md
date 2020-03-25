@@ -4,6 +4,7 @@
 ```
 git git@github.com:HigorMonteiro/medicar-backend.git
 cd medicar-backend/
+mv env_sample.txt .env 
 ```
 ### Running with Docker:
 
